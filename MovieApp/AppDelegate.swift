@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  MovieApp
 //
-//  Created by Ana Ljubek on 25.03.2022..
+//  Created by Ana Ljubek on 29.03.2022..
 //
 
 import UIKit
