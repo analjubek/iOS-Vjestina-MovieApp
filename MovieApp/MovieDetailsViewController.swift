@@ -31,6 +31,8 @@ class MovieDetailsViewController: UIViewController{
     private func mainInfo(){
         imageGradient()
         userScore()
+        basicInfo()
+        favoriteButton()
     }
     
     private func imageGradient() {
@@ -74,6 +76,52 @@ class MovieDetailsViewController: UIViewController{
         userScoreView.addSubview(percentageLabel)
         
         view.addSubview(userScoreView)
+    }
+    
+    private func basicInfo(){
+        var basicInfoView = UIView()
+        
+        var titleLabel = UILabel()
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont(name: "Futura", size: 24)
+        titleLabel.text = "Life Is Beautiful (1997)"
+        titleLabel.frame = CGRect(x: 20, y: 90, width: view.bounds.width, height: 303)
+        
+        basicInfoView.addSubview(titleLabel)
+        
+        var dateLabel = UILabel()
+        dateLabel.textColor = .white
+        dateLabel.font = UIFont(name: "Futura", size: 14)
+        dateLabel.text = "20/12/1997 (Italy)"
+        dateLabel.frame = CGRect(x: 20, y: 120, width: view.bounds.width, height: 303)
+        
+        basicInfoView.addSubview(dateLabel)
+        
+        var genreLabel = UILabel()
+        genreLabel.textColor = .white
+        genreLabel.font = UIFont(name: "Futura", size: 14)
+        genreLabel.text = "Comedy, Drama, Romance 1h 56m"
+        genreLabel.frame = CGRect(x: 20, y: 140, width: view.bounds.width, height: 303)
+        
+        basicInfoView.addSubview(genreLabel)
+        
+        view.addSubview(basicInfoView)
+    }
+    private func favoriteButton(){
+        var favoriteButtonView = UIView()
+        
+        favoriteButtonView.backgroundColor = .gray
+        favoriteButtonView.layer.cornerRadius = 16
+        favoriteButtonView.frame = CGRect (x: 20, y: 310, width: 32, height: 32)
+        
+        var favButton = UIButton()
+        favButton.setImage(UIImage(systemName: "star"), for: .normal)
+        favButton.tintColor = .white
+        favButton.frame = CGRect (x: 0, y: 0, width: 32, height: 32)
+        
+        favoriteButtonView.addSubview(favButton)
+        
+        view.addSubview(favoriteButtonView)
     }
     
 }
