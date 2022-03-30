@@ -16,6 +16,7 @@
 		F6CD263427F37E720075ADCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6CD263227F37E720075ADCA /* LaunchScreen.storyboard */; };
 		F6CD263E27F46E3B0075ADCA /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD263D27F46E3B0075ADCA /* MovieDetailsViewController.swift */; };
 		F6CD264127F477800075ADCA /* PureLayout in Frameworks */ = {isa = PBXBuildFile; productRef = F6CD264027F477800075ADCA /* PureLayout */; };
+		F6CD264427F49BDF0075ADCA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F6CD264327F49BDF0075ADCA /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6CD264427F49BDF0075ADCA /* SnapKit in Frameworks */,
 				F6CD264127F477800075ADCA /* PureLayout in Frameworks */,
 				9D799BCC31922B50B9638195 /* Pods_MovieApp.framework in Frameworks */,
 			);
@@ -115,6 +117,7 @@
 			name = MovieApp;
 			packageProductDependencies = (
 				F6CD264027F477800075ADCA /* PureLayout */,
+				F6CD264327F49BDF0075ADCA /* SnapKit */,
 			);
 			productName = MovieApp;
 			productReference = F6CD262427F37E710075ADCA /* MovieApp.app */;
@@ -146,6 +149,7 @@
 			mainGroup = F6CD261B27F37E710075ADCA;
 			packageReferences = (
 				F6CD263F27F477800075ADCA /* XCRemoteSwiftPackageReference "PureLayout" */,
+				F6CD264227F49BDF0075ADCA /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = F6CD262527F37E710075ADCA /* Products */;
 			projectDirPath = "";
@@ -432,6 +436,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		F6CD264227F49BDF0075ADCA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -439,6 +451,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F6CD263F27F477800075ADCA /* XCRemoteSwiftPackageReference "PureLayout" */;
 			productName = PureLayout;
+		};
+		F6CD264327F49BDF0075ADCA /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6CD264227F49BDF0075ADCA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
