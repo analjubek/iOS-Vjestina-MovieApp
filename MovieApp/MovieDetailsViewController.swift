@@ -43,7 +43,7 @@ class MovieDetailsViewController: UIViewController{
         let movieImageView = UIImageView(image: movieImage)
         movieImageView.contentMode = .scaleAspectFill
         movieImageView.clipsToBounds = true
-        movieImageView.frame = CGRect(x: 0, y: 80, width: view.bounds.width, height: 303)
+        movieImageView.frame = CGRect(x: 0, y: 90, width: view.bounds.width, height: 303)
         
         let gradient = CAGradientLayer()
         gradient.frame = movieImageView.bounds
@@ -64,11 +64,11 @@ class MovieDetailsViewController: UIViewController{
         
         percentageButtonView.backgroundColor = .systemGreen
         percentageButtonView.layer.cornerRadius = 21
-        percentageButtonView.frame = CGRect (x: 20, y: 180, width: 42, height: 42)
+        percentageButtonView.frame = CGRect (x: 20, y: 210, width: 42, height: 42)
         
         var percentageLabel = UILabel()
         percentageLabel.textColor = .white
-        percentageLabel.font = UIFont(name: "Futura", size: 15)
+        percentageLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 15)
         percentageLabel.text = "87%"
         percentageLabel.frame = CGRect(x: 7, y: -130, width: view.bounds.width, height: 303)
         
@@ -76,9 +76,9 @@ class MovieDetailsViewController: UIViewController{
         
         var userScoreLabel = UILabel()
         userScoreLabel.textColor = .white
-        userScoreLabel.font = UIFont(name: "Futura", size: 14)
+        userScoreLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 14)
         userScoreLabel.text = "User Score"
-        userScoreLabel.frame = CGRect(x: 70, y: 52, width: view.bounds.width, height: 303)
+        userScoreLabel.frame = CGRect(x: 70, y: 82, width: view.bounds.width, height: 303)
         
         userScoreView.addSubview(percentageButtonView)
         userScoreView.addSubview(userScoreLabel)
@@ -91,9 +91,9 @@ class MovieDetailsViewController: UIViewController{
         
         var titleLabel = UILabel()
         titleLabel.textColor = .white
-        titleLabel.font = UIFont(name: "Futura", size: 24)
+        titleLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 24)
         titleLabel.text = "Life Is Beautiful (1997)"
-        titleLabel.frame = CGRect(x: 20, y: 90, width: view.bounds.width, height: 303)
+        titleLabel.frame = CGRect(x: 20, y: 120, width: view.bounds.width, height: 303)
         
         basicInfoView.addSubview(titleLabel)
         
@@ -101,7 +101,7 @@ class MovieDetailsViewController: UIViewController{
         dateLabel.textColor = .white
         dateLabel.font = UIFont(name: "Futura", size: 14)
         dateLabel.text = "20/12/1997 (Italy)"
-        dateLabel.frame = CGRect(x: 20, y: 120, width: view.bounds.width, height: 303)
+        dateLabel.frame = CGRect(x: 20, y: 150, width: view.bounds.width, height: 303)
         
         basicInfoView.addSubview(dateLabel)
         
@@ -109,7 +109,7 @@ class MovieDetailsViewController: UIViewController{
         genreLabel.textColor = .white
         genreLabel.font = UIFont(name: "Futura", size: 14)
         genreLabel.text = "Comedy, Drama, Romance 1h 56m"
-        genreLabel.frame = CGRect(x: 20, y: 140, width: view.bounds.width, height: 303)
+        genreLabel.frame = CGRect(x: 20, y: 170, width: view.bounds.width, height: 303)
         
         basicInfoView.addSubview(genreLabel)
         
@@ -120,7 +120,7 @@ class MovieDetailsViewController: UIViewController{
         
         favoriteButtonView.backgroundColor = .gray
         favoriteButtonView.layer.cornerRadius = 16
-        favoriteButtonView.frame = CGRect (x: 20, y: 310, width: 32, height: 32)
+        favoriteButtonView.frame = CGRect (x: 20, y: 340, width: 32, height: 32)
         
         var favButton = UIButton()
         favButton.setImage(UIImage(systemName: "star"), for: .normal)
@@ -134,6 +134,7 @@ class MovieDetailsViewController: UIViewController{
     
     private func overview(){
         description()
+        roles()
     }
     
     private func description(){
@@ -141,7 +142,7 @@ class MovieDetailsViewController: UIViewController{
         
         var overviewLabel = UILabel()
         overviewLabel.textColor = .black
-        overviewLabel.font = UIFont(name: "Futura", size: 20)
+        overviewLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 20)
         overviewLabel.text = "Overview"
         overviewLabel.frame = CGRect(x: 20, y: 260, width: view.bounds.width, height: 303)
         
@@ -157,6 +158,73 @@ class MovieDetailsViewController: UIViewController{
         descriptionView.addSubview(desriptionLabel)
         
         view.addSubview(descriptionView)
+    }
+    
+    private func roles(){
+        var rolesView = UIView()
+        
+        var upStackView = UIStackView()
+        upStackView.axis = .horizontal
+        upStackView.alignment = .fill
+        upStackView.distribution = .fillEqually
+        //upStackView.translatesAutoresizingMaskIntoConstraints = false
+        upStackView.spacing = 5
+        
+        var downStackView = UIStackView()
+        downStackView.axis = .horizontal
+        downStackView.alignment = .fill
+        downStackView.distribution = .fillEqually
+        //downStackView.translatesAutoresizingMaskIntoConstraints = false
+        downStackView.spacing = 5
+        
+        upStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Actor", moveX: 0, moveY: 0))
+        upStackView.addArrangedSubview(makeRole(name: "Nicoletta Braschi", job: "Actress", moveX: 1, moveY: 0))
+        upStackView.addArrangedSubview(makeRole(name: "Giorgio Cantarini", job: "Actor", moveX: 2, moveY: 0))
+        
+        downStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Director", moveX: 0, moveY: 1))
+        downStackView.addArrangedSubview(makeRole(name: "Vincenzo Cerami", job: "Screenplay", moveX: 1, moveY: 1))
+        downStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Screenplay", moveX: 2, moveY: 1))
+        
+        rolesView.addSubview(upStackView)
+        rolesView.addSubview(downStackView)
+        
+        rolesView.frame = CGRect(x: 20, y: 300, width: view.bounds.width, height: 600)
+        
+        view.addSubview(rolesView)
+        
+    }
+    
+    private func makeRole(name: String, job: String, moveX: Float, moveY: Float) -> UIView{
+        var roleView = UIView()
+        
+        var nameLabel = UILabel()
+        nameLabel.textColor = .black
+        nameLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 14)
+        nameLabel.text = name
+        nameLabel.frame = CGRect(x: (CGFloat(moveX)*(view.bounds.width/3)), y: CGFloat(moveY)*70, width: view.bounds.width, height: 500)
+        
+        roleView.addSubview(nameLabel)
+        
+        var jobLabel = UILabel()
+        jobLabel.textColor = .black
+        jobLabel.font = UIFont(name: "Futura", size: 14)
+        jobLabel.text = job
+        jobLabel.frame = CGRect(x: (CGFloat(moveX)*(view.bounds.width/3)), y: CGFloat(moveY)*70, width: view.bounds.width, height: 550)
+        
+        roleView.addSubview(jobLabel)
+        
+        /*nameLabel.snp.makeConstraints ({
+            $0.leading.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-10)
+        })
+        
+        jobLabel.snp.makeConstraints({
+            $0.leading.equalTo(nameLabel.snp.leading)
+            $0.centerY.equalToSuperview().offset(10)
+        })*/
+        
+        
+        return roleView
     }
 }
 
