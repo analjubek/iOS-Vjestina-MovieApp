@@ -18,6 +18,7 @@ class MovieDetailsViewController: UIViewController{
         
         rectangle()
         mainInfo()
+        overview()
     }
     
     private func rectangle(){
@@ -59,21 +60,28 @@ class MovieDetailsViewController: UIViewController{
     private func userScore(){
         var userScoreView = UIView()
         
-        var userScoreLabel = UILabel()
-        userScoreLabel.textColor = .white
-        userScoreLabel.font = UIFont(name: "Futura", size: 14)
-        userScoreLabel.text = "User Score"
-        userScoreLabel.frame = CGRect(x: 80, y: 60, width: view.bounds.width, height: 303)
-    
-        userScoreView.addSubview(userScoreLabel)
+        var percentageButtonView = UIView()
+        
+        percentageButtonView.backgroundColor = .systemGreen
+        percentageButtonView.layer.cornerRadius = 21
+        percentageButtonView.frame = CGRect (x: 20, y: 180, width: 42, height: 42)
         
         var percentageLabel = UILabel()
         percentageLabel.textColor = .white
         percentageLabel.font = UIFont(name: "Futura", size: 15)
         percentageLabel.text = "87%"
-        percentageLabel.frame = CGRect(x: 25, y: 60, width: view.bounds.width, height: 303)
+        percentageLabel.frame = CGRect(x: 7, y: -130, width: view.bounds.width, height: 303)
         
-        userScoreView.addSubview(percentageLabel)
+        percentageButtonView.addSubview(percentageLabel)
+        
+        var userScoreLabel = UILabel()
+        userScoreLabel.textColor = .white
+        userScoreLabel.font = UIFont(name: "Futura", size: 14)
+        userScoreLabel.text = "User Score"
+        userScoreLabel.frame = CGRect(x: 70, y: 52, width: view.bounds.width, height: 303)
+        
+        userScoreView.addSubview(percentageButtonView)
+        userScoreView.addSubview(userScoreLabel)
         
         view.addSubview(userScoreView)
     }
@@ -124,5 +132,31 @@ class MovieDetailsViewController: UIViewController{
         view.addSubview(favoriteButtonView)
     }
     
+    private func overview(){
+        description()
+    }
+    
+    private func description(){
+        var descriptionView = UIView()
+        
+        var overviewLabel = UILabel()
+        overviewLabel.textColor = .black
+        overviewLabel.font = UIFont(name: "Futura", size: 20)
+        overviewLabel.text = "Overview"
+        overviewLabel.frame = CGRect(x: 20, y: 260, width: view.bounds.width, height: 303)
+        
+        descriptionView.addSubview(overviewLabel)
+        
+        var desriptionLabel = UILabel()
+        desriptionLabel.textColor = .black
+        desriptionLabel.font = UIFont(name: "Futura", size: 14)
+        desriptionLabel.text = "When an open-minded Jewish waiter and his son become victims of the Holocaust, he uses a perfect mixture of will, humor, and imagination to protect his son from the dangers around their camp."
+        desriptionLabel.frame = CGRect(x: 20, y: 320, width: view.bounds.width, height: 303)
+        desriptionLabel.numberOfLines = 0
+        
+        descriptionView.addSubview(desriptionLabel)
+        
+        view.addSubview(descriptionView)
+    }
 }
 
