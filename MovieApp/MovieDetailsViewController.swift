@@ -12,38 +12,117 @@ import SnapKit
 import SwiftUI
 
 class MovieDetailsViewController: UIViewController{
+    //topBar
+    private var topBarView: UIView!
+    private var logoImageView: UIImageView!
+    
+    
+    //imageGradient
+    private var imageGradientView: UIView!
+    private var movieImageView: UIImageView!
+    
+    //userScore
+    private var userScoreView: UIView!
+    private var percentageButtonView: UIView!
+    private var percentageLabel: UILabel!
+    private var userScoreLabel: UILabel!
+    
+    //basicInfo
+    private var basicInfoView: UIView!
+    private var titleLabel: UILabel!
+    private var dateLabel: UILabel!
+    private var genreLabel: UILabel!
+    
+    private var favoriteButtonView: UIView!
+    private var favButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        rectangle()
-        mainInfo()
-        overview()
+        viewsFunc()
+        defineLayoutForViews()
     }
     
-    private func rectangle(){
-        let rec = UIView()
-        rec.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 80)
-        rec.backgroundColor = .systemBlue
+    private func viewsFunc(){
+        topBar()
         
-        view.addSubview(rec)
-    }
-    
-    private func mainInfo(){
         imageGradient()
         userScore()
         basicInfo()
         favoriteButton()
+        
+        overview()
+    }
+    
+    private func defineLayoutForViews(){
+        topBarConstraints()
+        
+        imageGradientConstraints()
+        userScoreConstraints()
+        basicInfoConstraints()
+        favoriteButtonConstraints()
+    }
+    
+    private func topBar(){
+        topBarView = UIView()
+        
+        topBarView.backgroundColor = hexStringToUIColor(hex: "#0B253F")
+        
+        let logoImage = UIImage(named: "logo")
+        logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFill
+        logoImageView.clipsToBounds = true
+        
+        topBarView.addSubview(logoImageView)
+        
+        view.addSubview(topBarView)
+    }
+    
+    private func topBarConstraints(){
+        topBarView.snp.makeConstraints{
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(80)
+        }
+        
+        logoImageView.snp.makeConstraints{
+            $0.centerX.equalTo(topBarView)
+            $0.bottom.equalTo(topBarView).inset(7)
+            $0.height.equalTo(35)
+            $0.width.equalTo(143)
+        }
+    }
+
+    func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+
+        var rgbValue:UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
     
     private func imageGradient() {
-        var imageGradientView = UIView()
+        imageGradientView = UIView()
         
         let movieImage = UIImage(named: "LifeIsBeautiful")
-        let movieImageView = UIImageView(image: movieImage)
+        movieImageView = UIImageView(image: movieImage)
         movieImageView.contentMode = .scaleAspectFill
         movieImageView.clipsToBounds = true
-        movieImageView.frame = CGRect(x: 0, y: 90, width: view.bounds.width, height: 303)
+        movieImageView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 303)
         
         let gradient = CAGradientLayer()
         gradient.frame = movieImageView.bounds
@@ -57,28 +136,39 @@ class MovieDetailsViewController: UIViewController{
         view.addSubview(imageGradientView)
     }
     
+    private func imageGradientConstraints(){
+        imageGradientView.snp.makeConstraints{
+            $0.top.equalTo(topBarView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(303)
+        }
+    }
+    
     private func userScore(){
-        var userScoreView = UIView()
+        userScoreView = UIView()
         
-        var percentageButtonView = UIView()
+        userScoreView.backgroundColor = .none
         
+        percentageButtonView = UIView()
         percentageButtonView.backgroundColor = .systemGreen
         percentageButtonView.layer.cornerRadius = 21
-        percentageButtonView.frame = CGRect (x: 20, y: 210, width: 42, height: 42)
+        percentageButtonView.frame = CGRect (x: 21, y: 108, width: 42, height: 42)
         
-        var percentageLabel = UILabel()
+        userScoreView.addSubview(percentageButtonView)
+        
+        percentageLabel = UILabel()
         percentageLabel.textColor = .white
         percentageLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 15)
         percentageLabel.text = "87%"
-        percentageLabel.frame = CGRect(x: 7, y: -130, width: view.bounds.width, height: 303)
+        percentageLabel.frame = CGRect(x: 8, y: 0, width: 42, height: 42)
         
         percentageButtonView.addSubview(percentageLabel)
         
-        var userScoreLabel = UILabel()
+        userScoreLabel = UILabel()
         userScoreLabel.textColor = .white
         userScoreLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 14)
         userScoreLabel.text = "User Score"
-        userScoreLabel.frame = CGRect(x: 70, y: 82, width: view.bounds.width, height: 303)
+        userScoreLabel.frame = CGRect(x: 71, y: -21, width: view.bounds.width, height: 303)
         
         userScoreView.addSubview(percentageButtonView)
         userScoreView.addSubview(userScoreLabel)
@@ -86,51 +176,105 @@ class MovieDetailsViewController: UIViewController{
         view.addSubview(userScoreView)
     }
     
+    private func userScoreConstraints(){
+        userScoreView.snp.makeConstraints {
+            $0.top.equalTo(topBarView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(303)
+        }
+        /*percentageButtonView.snp.makeConstraints{
+            $0.top.equalTo(topBarView.snp.bottom).inset(108)
+            $0.leading.equalToSuperview()
+        }
+        percentageLabel.snp.makeConstraints{
+            $0.top.equalTo(topBarView.snp.bottom).inset(121)
+            $0.leading.equalToSuperview().inset(31)
+        }
+        userScoreLabel.snp.makeConstraints{
+            $0.top.equalTo(topBarView.snp.bottom).inset(122)
+            $0.leading.equalToSuperview().inset(71)
+        }*/
+    }
+    
     private func basicInfo(){
-        var basicInfoView = UIView()
+        basicInfoView = UIView()
         
-        var titleLabel = UILabel()
+        userScoreView.backgroundColor = .none
+        
+        titleLabel = UILabel()
         titleLabel.textColor = .white
         titleLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 24)
         titleLabel.text = "Life Is Beautiful (1997)"
-        titleLabel.frame = CGRect(x: 20, y: 120, width: view.bounds.width, height: 303)
+        titleLabel.frame = CGRect(x: 18, y: 30, width: view.bounds.width, height: 303)
         
         basicInfoView.addSubview(titleLabel)
         
-        var dateLabel = UILabel()
+        dateLabel = UILabel()
         dateLabel.textColor = .white
         dateLabel.font = UIFont(name: "Futura", size: 14)
         dateLabel.text = "20/12/1997 (Italy)"
-        dateLabel.frame = CGRect(x: 20, y: 150, width: view.bounds.width, height: 303)
+        dateLabel.frame = CGRect(x: 18, y: 60, width: view.bounds.width, height: 303)
         
         basicInfoView.addSubview(dateLabel)
         
-        var genreLabel = UILabel()
+        genreLabel = UILabel()
         genreLabel.textColor = .white
         genreLabel.font = UIFont(name: "Futura", size: 14)
         genreLabel.text = "Comedy, Drama, Romance 1h 56m"
-        genreLabel.frame = CGRect(x: 20, y: 170, width: view.bounds.width, height: 303)
+        genreLabel.frame = CGRect(x: 18, y: 80, width: view.bounds.width, height: 303)
         
         basicInfoView.addSubview(genreLabel)
         
         view.addSubview(basicInfoView)
     }
+    private func basicInfoConstraints(){
+        basicInfoView.snp.makeConstraints {
+            $0.top.equalTo(topBarView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(303)
+        }/*
+        titleLabel.snp.makeConstraints{
+            $0.top.equalTo(topBarView.snp.bottom).inset(159)
+            $0.leading.equalToSuperview().inset(18)
+        }
+         dateLabel.snp.makeConstraints{
+            $0.top.equalTo(topBarView.snp.bottom).inset(196)
+            $0.leading.equalToSuperview().inset(18)
+        }
+         genreLabel.snp.makeConstraints{
+            $0.top.equalTo(topBarView.snp.bottom).inset(122-(40/2))
+            $0.leading.equalToSuperview().inset(18)
+        }*/
+    }
     private func favoriteButton(){
-        var favoriteButtonView = UIView()
+        favoriteButtonView = UIView()
         
         favoriteButtonView.backgroundColor = .gray
         favoriteButtonView.layer.cornerRadius = 16
-        favoriteButtonView.frame = CGRect (x: 20, y: 340, width: 32, height: 32)
+        favoriteButtonView.frame = CGRect (x: 0, y: 0, width: 32, height: 32)
         
-        var favButton = UIButton()
+        favButton = UIButton()
         favButton.setImage(UIImage(systemName: "star"), for: .normal)
         favButton.tintColor = .white
-        favButton.frame = CGRect (x: 0, y: 0, width: 32, height: 32)
+        favButton.frame = CGRect (x: 0, y: 0, width: 14, height: 13)
         
         favoriteButtonView.addSubview(favButton)
         
         view.addSubview(favoriteButtonView)
     }
+    private func favoriteButtonConstraints(){
+        favoriteButtonView.snp.makeConstraints {
+            $0.top.equalTo(330)
+            $0.leading.equalTo(18)
+            $0.trailing.equalTo(-340)
+            $0.height.equalTo(32)
+        }
+        favButton.snp.makeConstraints{
+            $0.center.equalToSuperview()
+        }
+    }
+    
+    
     
     private func overview(){
         description()
