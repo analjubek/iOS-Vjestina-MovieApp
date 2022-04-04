@@ -33,8 +33,26 @@ class MovieDetailsViewController: UIViewController{
     private var dateLabel: UILabel!
     private var genreLabel: UILabel!
     
+    //favoriteButton
     private var favoriteButtonView: UIView!
     private var favButton: UIButton!
+    
+    
+    //description
+    private var descriptionView: UIView!
+    private var overviewLabel: UILabel!
+    private var desriptionLabel: UILabel!
+    
+    //roles
+    private var rolesView: UIView!
+    private var upStackView: UIStackView!
+    private var downStackView: UIStackView!
+    
+    private var roleView: UIView!
+    private var nameLabel: UILabel!
+    private var jobLabel: UILabel!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +70,8 @@ class MovieDetailsViewController: UIViewController{
         basicInfo()
         favoriteButton()
         
-        overview()
+        description()
+        roles()
     }
     
     private func defineLayoutForViews(){
@@ -62,7 +81,12 @@ class MovieDetailsViewController: UIViewController{
         userScoreConstraints()
         basicInfoConstraints()
         favoriteButtonConstraints()
+        
+        descriptionConstraints()
+        rolesConstraints()
     }
+    
+    
     
     private func topBar(){
         topBarView = UIView()
@@ -114,6 +138,8 @@ class MovieDetailsViewController: UIViewController{
             alpha: CGFloat(1.0)
         )
     }
+    
+    
     
     private func imageGradient() {
         imageGradientView = UIView()
@@ -273,30 +299,27 @@ class MovieDetailsViewController: UIViewController{
             $0.center.equalToSuperview()
         }
     }
+
     
-    
-    
-    private func overview(){
-        description()
-        roles()
-    }
     
     private func description(){
-        var descriptionView = UIView()
+        descriptionView = UIView()
         
-        var overviewLabel = UILabel()
+        descriptionView.backgroundColor = .white
+        
+        overviewLabel = UILabel()
         overviewLabel.textColor = .black
         overviewLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 20)
         overviewLabel.text = "Overview"
-        overviewLabel.frame = CGRect(x: 20, y: 260, width: view.bounds.width, height: 303)
+        //overviewLabel.frame = CGRect(x: 20, y: 260, width: view.bounds.width, height: 303)
         
         descriptionView.addSubview(overviewLabel)
         
-        var desriptionLabel = UILabel()
+        desriptionLabel = UILabel()
         desriptionLabel.textColor = .black
         desriptionLabel.font = UIFont(name: "Futura", size: 14)
         desriptionLabel.text = "When an open-minded Jewish waiter and his son become victims of the Holocaust, he uses a perfect mixture of will, humor, and imagination to protect his son from the dangers around their camp."
-        desriptionLabel.frame = CGRect(x: 20, y: 320, width: view.bounds.width, height: 303)
+        //desriptionLabel.frame = CGRect(x: 20, y: 320, width: view.bounds.width, height: 303)
         desriptionLabel.numberOfLines = 0
         
         descriptionView.addSubview(desriptionLabel)
@@ -304,30 +327,45 @@ class MovieDetailsViewController: UIViewController{
         view.addSubview(descriptionView)
     }
     
+    private func descriptionConstraints(){
+        descriptionView.snp.makeConstraints{
+            $0.top.equalTo(imageGradientView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+        }
+        overviewLabel.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(20)
+            $0.leading.trailing.equalTo(18)
+        }
+        desriptionLabel.snp.makeConstraints{
+            $0.top.equalTo(overviewLabel.snp.bottom).offset(8)
+            $0.leading.trailing.equalTo(18)
+        }
+    }
+    
     private func roles(){
-        var rolesView = UIView()
+        rolesView = UIView()
         
-        var upStackView = UIStackView()
+        upStackView = UIStackView()
         upStackView.axis = .horizontal
         upStackView.alignment = .fill
         upStackView.distribution = .fillEqually
         //upStackView.translatesAutoresizingMaskIntoConstraints = false
         upStackView.spacing = 5
         
-        var downStackView = UIStackView()
+        downStackView = UIStackView()
         downStackView.axis = .horizontal
         downStackView.alignment = .fill
         downStackView.distribution = .fillEqually
         //downStackView.translatesAutoresizingMaskIntoConstraints = false
         downStackView.spacing = 5
         
-        upStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Actor", moveX: 0, moveY: 0))
-        upStackView.addArrangedSubview(makeRole(name: "Nicoletta Braschi", job: "Actress", moveX: 1, moveY: 0))
-        upStackView.addArrangedSubview(makeRole(name: "Giorgio Cantarini", job: "Actor", moveX: 2, moveY: 0))
+        upStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Actor"))
+        upStackView.addArrangedSubview(makeRole(name: "Nicoletta Braschi", job: "Actress"))
+        upStackView.addArrangedSubview(makeRole(name: "Giorgio Cantarini", job: "Actor"))
         
-        downStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Director", moveX: 0, moveY: 1))
-        downStackView.addArrangedSubview(makeRole(name: "Vincenzo Cerami", job: "Screenplay", moveX: 1, moveY: 1))
-        downStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Screenplay", moveX: 2, moveY: 1))
+        downStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Director"))
+        downStackView.addArrangedSubview(makeRole(name: "Vincenzo Cerami", job: "Screenplay"))
+        downStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Screenplay"))
         
         rolesView.addSubview(upStackView)
         rolesView.addSubview(downStackView)
@@ -338,26 +376,43 @@ class MovieDetailsViewController: UIViewController{
         
     }
     
-    private func makeRole(name: String, job: String, moveX: Float, moveY: Float) -> UIView{
-        var roleView = UIView()
+    private func rolesConstraints(){
+        rolesView.snp.makeConstraints{
+            $0.top.equalTo(desriptionLabel.snp.bottom).offset(22)
+            $0.leading.trailing.equalToSuperview()
+        }
+        upStackView.snp.makeConstraints{
+            $0.top.equalTo(desriptionLabel.snp.bottom).offset(22)
+            $0.leading.trailing.equalTo(18)
+            $0.height.equalTo(40)
+        }
+        downStackView.snp.makeConstraints{
+            $0.top.equalTo(upStackView.snp.bottom).offset(26)
+            $0.leading.trailing.equalTo(18)
+            $0.height.equalTo(40)
+        }
+    }
+    
+    private func makeRole(name: String, job: String) -> UIView{
+        roleView = UIView()
         
-        var nameLabel = UILabel()
+        nameLabel = UILabel()
         nameLabel.textColor = .black
         nameLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 14)
         nameLabel.text = name
-        nameLabel.frame = CGRect(x: (CGFloat(moveX)*(view.bounds.width/3)), y: CGFloat(moveY)*70, width: view.bounds.width, height: 500)
+        //nameLabel.frame = CGRect(x: (CGFloat(moveX)*(view.bounds.width/3)), y: CGFloat(moveY)*70, width: view.bounds.width, height: 500)
         
         roleView.addSubview(nameLabel)
         
-        var jobLabel = UILabel()
+        jobLabel = UILabel()
         jobLabel.textColor = .black
         jobLabel.font = UIFont(name: "Futura", size: 14)
         jobLabel.text = job
-        jobLabel.frame = CGRect(x: (CGFloat(moveX)*(view.bounds.width/3)), y: CGFloat(moveY)*70, width: view.bounds.width, height: 550)
+        //jobLabel.frame = CGRect(x: (CGFloat(moveX)*(view.bounds.width/3)), y: CGFloat(moveY)*70, width: view.bounds.width, height: 550)
         
         roleView.addSubview(jobLabel)
         
-        /*nameLabel.snp.makeConstraints ({
+        nameLabel.snp.makeConstraints ({
             $0.leading.equalToSuperview()
             $0.centerY.equalToSuperview().offset(-10)
         })
@@ -365,10 +420,9 @@ class MovieDetailsViewController: UIViewController{
         jobLabel.snp.makeConstraints({
             $0.leading.equalTo(nameLabel.snp.leading)
             $0.centerY.equalToSuperview().offset(10)
-        })*/
+        })
         
         
         return roleView
     }
 }
-
