@@ -287,12 +287,13 @@ class MovieDetailsViewController: UIViewController{
         favoriteButtonView.addSubview(favButton)
         
         view.addSubview(favoriteButtonView)
+
     }
     private func favoriteButtonConstraints(){
         favoriteButtonView.snp.makeConstraints {
             $0.top.equalTo(330)
             $0.leading.equalTo(18)
-            $0.trailing.equalTo(-340)
+            $0.width.equalTo(32)
             $0.height.equalTo(32)
         }
         favButton.snp.makeConstraints{
