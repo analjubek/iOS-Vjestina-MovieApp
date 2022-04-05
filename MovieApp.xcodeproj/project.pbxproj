@@ -18,7 +18,7 @@
 		F6CD264127F477800075ADCA /* PureLayout in Frameworks */ = {isa = PBXBuildFile; productRef = F6CD264027F477800075ADCA /* PureLayout */; };
 		F6CD264427F49BDF0075ADCA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F6CD264327F49BDF0075ADCA /* SnapKit */; };
 		F6CD264B27FCC5850075ADCA /* MovieAppData in Frameworks */ = {isa = PBXBuildFile; productRef = F6CD264A27FCC5850075ADCA /* MovieAppData */; };
-		F6CD264F27FCD40E0075ADCA /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD264E27FCD40E0075ADCA /* MovieListViewController.swift */; };
+		F6CD265127FCD4C80075ADCA /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD265027FCD4C80075ADCA /* MovieListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		F6CD263327F37E720075ADCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6CD263527F37E720075ADCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6CD263D27F46E3B0075ADCA /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
-		F6CD264E27FCD40E0075ADCA /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieListViewController.swift; path = ../../MovieApp2/MovieListViewController.swift; sourceTree = "<group>"; };
+		F6CD265027FCD4C80075ADCA /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 				F6CD263227F37E720075ADCA /* LaunchScreen.storyboard */,
 				F6CD263527F37E720075ADCA /* Info.plist */,
 				F6CD263D27F46E3B0075ADCA /* MovieDetailsViewController.swift */,
-				F6CD264E27FCD40E0075ADCA /* MovieListViewController.swift */,
+				F6CD265027FCD4C80075ADCA /* MovieListViewController.swift */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6CD263E27F46E3B0075ADCA /* MovieDetailsViewController.swift in Sources */,
-				F6CD264F27FCD40E0075ADCA /* MovieListViewController.swift in Sources */,
+				F6CD265127FCD4C80075ADCA /* MovieListViewController.swift in Sources */,
 				F6CD262C27F37E710075ADCA /* ViewController.swift in Sources */,
 				F6CD262827F37E710075ADCA /* AppDelegate.swift in Sources */,
 				F6CD262A27F37E710075ADCA /* SceneDelegate.swift in Sources */,
