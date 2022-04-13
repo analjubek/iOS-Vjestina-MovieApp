@@ -6,10 +6,7 @@
 //
 
 import Foundation
-
-import Foundation
 import UIKit
-import PureLayout
 import SnapKit
 import SwiftUI
 
@@ -29,14 +26,14 @@ class MovieListViewController: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        viewsFunc()
+        createViews()
         defineLayoutForViews()
     }
     
-    private func viewsFunc(){
-        topBar()
+    private func createViews(){
+        createTopBar()
         
-        searchBarFunc()
+        createSearchBar()
     }
     
     private func defineLayoutForViews(){
@@ -45,10 +42,10 @@ class MovieListViewController: UIViewController, UITextFieldDelegate{
         searchBarConstraints()
     }
     
-    private func topBar(){
+    private func createTopBar(){
         topBarView = UIView()
         
-        topBarView.backgroundColor = hexStringToUIColor(hex: "#0B253F")
+        topBarView.backgroundColor = UIColor.hexStringToUIColor(hex: "#0B253F")
         
         let logoImage = UIImage(named: "logo")
         logoImageView = UIImageView(image: logoImage)
@@ -73,34 +70,12 @@ class MovieListViewController: UIViewController, UITextFieldDelegate{
             $0.width.equalTo(143)
         }
     }
-
-    func hexStringToUIColor (hex: String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
     
-    func searchBarFunc(){
+    func createSearchBar(){
         searchBarView = UIView()
         view.addSubview(searchBarView)
         
-        searchBarView.backgroundColor = hexStringToUIColor(hex: "#EAEAEB")
+        searchBarView.backgroundColor = UIColor.hexStringToUIColor(hex: "#EAEAEB")
         searchBarView.layer.cornerRadius = 10
         
         let searchImage = UIImage(named: "search-icon")
@@ -111,7 +86,7 @@ class MovieListViewController: UIViewController, UITextFieldDelegate{
         
         searchTextField = UITextField()
         searchTextField.placeholder = "Search"
-        searchTextField.textColor = hexStringToUIColor(hex: "#0B253F")
+        searchTextField.textColor = UIColor.hexStringToUIColor(hex: "#0B253F")
         searchTextField.font = UIFont(name: "Futura", size: 16)
         searchTextField.delegate = self
         
@@ -122,10 +97,7 @@ class MovieListViewController: UIViewController, UITextFieldDelegate{
     func searchBarConstraints(){
         searchBarView.snp.makeConstraints{
             $0.top.equalTo(topBarView.snp.bottom).offset(22)
-            //$0.leading.trailing.equalToSuperview().offset(18)
-            //$0.leading.trailing.equalTo(18)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
-            //$0.leading.trailing.equalTo(view.safeAreaInsets).offset(18)
             $0.height.equalTo(43)
         }
         searchImageView.snp.makeConstraints{

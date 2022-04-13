@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import PureLayout
 import SnapKit
 import SwiftUI
 
@@ -91,7 +90,8 @@ class MovieDetailsViewController: UIViewController{
     private func topBar(){
         topBarView = UIView()
         
-        topBarView.backgroundColor = hexStringToUIColor(hex: "#0B253F")
+        topBarView.backgroundColor = UIColor.hexStringToUIColor(hex: "#0B253F")
+        //hexStringToUIColor(hex: "#0B253F")
         
         let logoImage = UIImage(named: "logo")
         logoImageView = UIImageView(image: logoImage)
@@ -117,30 +117,6 @@ class MovieDetailsViewController: UIViewController{
         }
     }
 
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-    
-    
-    
     private func imageGradient() {
         imageGradientView = UIView()
         
@@ -312,7 +288,6 @@ class MovieDetailsViewController: UIViewController{
         overviewLabel.textColor = .black
         overviewLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 20)
         overviewLabel.text = "Overview"
-        //overviewLabel.frame = CGRect(x: 20, y: 260, width: view.bounds.width, height: 303)
         
         descriptionView.addSubview(overviewLabel)
         
@@ -320,7 +295,6 @@ class MovieDetailsViewController: UIViewController{
         desriptionLabel.textColor = .black
         desriptionLabel.font = UIFont(name: "Futura", size: 14)
         desriptionLabel.text = "When an open-minded Jewish waiter and his son become victims of the Holocaust, he uses a perfect mixture of will, humor, and imagination to protect his son from the dangers around their camp."
-        //desriptionLabel.frame = CGRect(x: 20, y: 320, width: view.bounds.width, height: 303)
         desriptionLabel.numberOfLines = 0
         
         descriptionView.addSubview(desriptionLabel)
@@ -350,14 +324,12 @@ class MovieDetailsViewController: UIViewController{
         upStackView.axis = .horizontal
         upStackView.alignment = .fill
         upStackView.distribution = .fillEqually
-        //upStackView.translatesAutoresizingMaskIntoConstraints = false
         upStackView.spacing = 5
         
         downStackView = UIStackView()
         downStackView.axis = .horizontal
         downStackView.alignment = .fill
         downStackView.distribution = .fillEqually
-        //downStackView.translatesAutoresizingMaskIntoConstraints = false
         downStackView.spacing = 5
         
         upStackView.addArrangedSubview(makeRole(name: "Roberto Benigni", job: "Actor"))
@@ -401,7 +373,6 @@ class MovieDetailsViewController: UIViewController{
         nameLabel.textColor = .black
         nameLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 14)
         nameLabel.text = name
-        //nameLabel.frame = CGRect(x: (CGFloat(moveX)*(view.bounds.width/3)), y: CGFloat(moveY)*70, width: view.bounds.width, height: 500)
         
         roleView.addSubview(nameLabel)
         
@@ -409,7 +380,6 @@ class MovieDetailsViewController: UIViewController{
         jobLabel.textColor = .black
         jobLabel.font = UIFont(name: "Futura", size: 14)
         jobLabel.text = job
-        //jobLabel.frame = CGRect(x: (CGFloat(moveX)*(view.bounds.width/3)), y: CGFloat(moveY)*70, width: view.bounds.width, height: 550)
         
         roleView.addSubview(jobLabel)
         
