@@ -118,16 +118,13 @@ class MovieListViewController: UIViewController, UITextFieldDelegate{
         searchBarView.addSubview(searchTextField)
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {    //delegate method
-        
-    }
     
     func searchBarConstraints(){
         searchBarView.snp.makeConstraints{
             $0.top.equalTo(topBarView.snp.bottom).offset(22)
             //$0.leading.trailing.equalToSuperview().offset(18)
             //$0.leading.trailing.equalTo(18)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(18)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
             //$0.leading.trailing.equalTo(view.safeAreaInsets).offset(18)
             $0.height.equalTo(43)
         }
