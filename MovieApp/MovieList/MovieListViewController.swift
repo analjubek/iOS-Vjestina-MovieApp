@@ -14,6 +14,10 @@ class MovieListViewController: UIViewController{
     
     private var searchBarView: SearchBarView!
     
+    private var movieAsGridController: MovieAsGridController!
+    
+    private var controllerView: UIView!
+    
     init(){
         super.init(nibName: nil, bundle: nil)
     }
@@ -25,8 +29,15 @@ class MovieListViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buildViewControllers()
         buildViews()
         buildConstrints()
+    }
+    
+    private func buildViewControllers() {
+        movieAsGridController = MovieAsGridController()
+        
+        addChild(movieAsGridController)
     }
     
     private func buildViews(){
@@ -37,6 +48,10 @@ class MovieListViewController: UIViewController{
         
         searchBarView = SearchBarView()
         view.addSubview(searchBarView)
+        
+        controllerView = UIView()
+        view.addSubview(controllerView)
+        controllerView.addSubview(movieAsGridController.view)
     }
     
     private func buildConstrints(){
@@ -47,6 +62,14 @@ class MovieListViewController: UIViewController{
         searchBarView.snp.makeConstraints{
             $0.top.equalTo(topBarView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(43)
+        }
+        controllerView.snp.makeConstraints{
+            $0.top.equalTo(searchBarView.snp.bottom).inset(-40)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        movieAsGridController.view.snp.makeConstraints{
+            $0.edges.equalTo(controllerView.snp.edges)
         }
     }
 }

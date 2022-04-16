@@ -10,6 +10,7 @@
 		F6BDAF9F280788B3004066F2 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDAF9E280788B3004066F2 /* UIColor+Hex.swift */; };
 		F6BDAFA12809D53E004066F2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDAFA02809D53E004066F2 /* SearchBarView.swift */; };
 		F6BDAFA62809F057004066F2 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDAFA52809F056004066F2 /* TopBarView.swift */; };
+		F6BDAFEB280AF71D004066F2 /* MovieAsGridContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDAFEA280AF71D004066F2 /* MovieAsGridContoller.swift */; };
 		F6CD262827F37E710075ADCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD262727F37E710075ADCA /* AppDelegate.swift */; };
 		F6CD262A27F37E710075ADCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD262927F37E710075ADCA /* SceneDelegate.swift */; };
 		F6CD262C27F37E710075ADCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD262B27F37E710075ADCA /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		F6BDAF9E280788B3004066F2 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		F6BDAFA02809D53E004066F2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		F6BDAFA52809F056004066F2 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
+		F6BDAFEA280AF71D004066F2 /* MovieAsGridContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAsGridContoller.swift; sourceTree = "<group>"; };
 		F6CD262427F37E710075ADCA /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6CD262727F37E710075ADCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6CD262927F37E710075ADCA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 		F6BDAFA32809EB6A004066F2 /* MovieListAsGrid */ = {
 			isa = PBXGroup;
 			children = (
+				F6BDAFEA280AF71D004066F2 /* MovieAsGridContoller.swift */,
 			);
 			path = MovieListAsGrid;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			files = (
 				F6CD263E27F46E3B0075ADCA /* MovieDetailsViewController.swift in Sources */,
 				F6CD265127FCD4C80075ADCA /* MovieListViewController.swift in Sources */,
+				F6BDAFEB280AF71D004066F2 /* MovieAsGridContoller.swift in Sources */,
 				F6CD262C27F37E710075ADCA /* ViewController.swift in Sources */,
 				F6BDAFA12809D53E004066F2 /* SearchBarView.swift in Sources */,
 				F6BDAF9F280788B3004066F2 /* UIColor+Hex.swift in Sources */,

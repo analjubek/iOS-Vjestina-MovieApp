@@ -60,7 +60,7 @@ class SearchBarView: UIView{
             $0.edges.equalToSuperview()
         }
         searchBarView.snp.makeConstraints{
-            $0.top.equalTo(mainView.snp.bottom).offset(22)
+            $0.top.equalTo(mainView.snp.bottom).inset(22)
             $0.leading.trailing.equalToSuperview().inset(18)
             $0.height.equalTo(43)
         }
