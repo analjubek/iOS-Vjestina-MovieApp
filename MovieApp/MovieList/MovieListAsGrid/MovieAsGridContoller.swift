@@ -10,11 +10,8 @@ import SnapKit
 
 class MovieAsGridController: UIViewController{
     
-    //public var collectionView: UICollectionView!
-    //private var collectionViewLayout: UICollectionViewLayout!
-    public var flowLayout: UICollectionViewFlowLayout!
+    private var flowLayout: UICollectionViewFlowLayout!
     public var collectionView: UICollectionView!
-    
     
     let cellIdentifier = "cellId"
     
@@ -37,6 +34,7 @@ class MovieAsGridController: UIViewController{
         
         flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
+        flowLayout.minimumLineSpacing = 20
         
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
         collectionView.backgroundColor = .white
@@ -48,36 +46,44 @@ class MovieAsGridController: UIViewController{
         collectionView.delegate = self
     }
     
+    private func buildConstraints(){
+        collectionView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+    }
+    
     
 }
 
 
 extension MovieAsGridController: UICollectionViewDataSource {
-func numberOfSections(in collectionView: UICollectionView) -> Int {
-return 1
-}
-func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-return 10
-}
-func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
-UICollectionViewCell {
-let cell = collectionView.dequeueReusableCell(
-withReuseIdentifier: cellIdentifier,
-for: indexPath)
-cell.backgroundColor = .blue
-return cell
-}
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: cellIdentifier,
+        for: indexPath)
+        cell.backgroundColor = .blue
+        return cell
+    }
 }
 extension MovieAsGridController: UICollectionViewDelegate {
-func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-// Logic when cell is selected
-}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    // Logic when cell is selected
+    }
 }
 
 extension MovieAsGridController: UICollectionViewDelegateFlowLayout {
-func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
-UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-let row = indexPath.row + 1
-return CGSize(width: row * 10, height: row * 10)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let widthSize = collectionView.frame.width
+        let heightSize = CGFloat(view.frame.height/2)
+        
+        return CGSize(width: widthSize, height: heightSize)
+    }
 }
-}
+

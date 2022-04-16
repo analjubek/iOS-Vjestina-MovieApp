@@ -73,7 +73,7 @@ class SearchBarView: UIView{
             $0.top.equalToSuperview().offset(11)
             $0.leading.equalTo(searchImageView.snp.trailing).offset(11)
             $0.height.equalTo(19)
-            $0.width.equalTo(searchBarView.snp.width).offset(43)
+            $0.width.equalTo(searchBarView.snp.width).inset(30)
         }
     }
 }
