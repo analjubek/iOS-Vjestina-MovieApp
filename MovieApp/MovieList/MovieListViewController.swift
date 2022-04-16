@@ -8,9 +8,11 @@
 import UIKit
 import SnapKit
 
-class MovieListViewController: UIViewController, UITextFieldDelegate{
-    //top bar
+class MovieListViewController: UIViewController{
+  
     private var topBarView: TopBarView!
+    
+    private var searchBarView: SearchBarView!
     
     init(){
         super.init(nibName: nil, bundle: nil)
@@ -24,24 +26,27 @@ class MovieListViewController: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         buildViews()
-        defineLayoutForViews()
+        buildConstrints()
     }
     
     private func buildViews(){
         view.backgroundColor = .white
-        topBarView = TopBarView()
         
+        topBarView = TopBarView()
         view.addSubview(topBarView)
+        
+        searchBarView = SearchBarView()
+        view.addSubview(searchBarView)
     }
     
-    private func defineLayoutForViews(){
-        topBarConstraints()
-    }
-    
-    private func topBarConstraints(){
+    private func buildConstrints(){
         topBarView.snp.makeConstraints{
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(80)
+        }
+        searchBarView.snp.makeConstraints{
+            $0.top.equalTo(topBarView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
         }
     }
 }
