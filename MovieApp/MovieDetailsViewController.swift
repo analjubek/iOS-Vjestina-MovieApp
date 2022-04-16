@@ -57,20 +57,20 @@ class MovieDetailsViewController: UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        viewsFunc()
+        createViews()
         defineLayoutForViews()
     }
     
-    private func viewsFunc(){
-        topBar()
+    private func createViews(){
+        createTopBar()
         
-        imageGradient()
-        userScore()
-        basicInfo()
-        favoriteButton()
+        createImageGradient()
+        createUserScore()
+        createBasicInfo()
+        createFavoriteButton()
         
-        description()
-        roles()
+        createDescription()
+        createRoles()
     }
     
     private func defineLayoutForViews(){
@@ -87,7 +87,7 @@ class MovieDetailsViewController: UIViewController{
     
     
     
-    private func topBar(){
+    private func createTopBar(){
         topBarView = UIView()
         
         topBarView.backgroundColor = UIColor.hexStringToUIColor(hex: "#0B253F")
@@ -117,7 +117,7 @@ class MovieDetailsViewController: UIViewController{
         }
     }
 
-    private func imageGradient() {
+    private func createImageGradient() {
         imageGradientView = UIView()
         
         let movieImage = UIImage(named: "LifeIsBeautiful")
@@ -146,7 +146,7 @@ class MovieDetailsViewController: UIViewController{
         }
     }
     
-    private func userScore(){
+    private func createUserScore(){
         userScoreView = UIView()
         
         userScoreView.backgroundColor = .none
@@ -198,7 +198,7 @@ class MovieDetailsViewController: UIViewController{
         }*/
     }
     
-    private func basicInfo(){
+    private func createBasicInfo(){
         basicInfoView = UIView()
         
         userScoreView.backgroundColor = .none
@@ -248,7 +248,7 @@ class MovieDetailsViewController: UIViewController{
             $0.leading.equalToSuperview().inset(18)
         }*/
     }
-    private func favoriteButton(){
+    private func createFavoriteButton(){
         favoriteButtonView = UIView()
         
         favoriteButtonView.backgroundColor = .gray
@@ -279,7 +279,7 @@ class MovieDetailsViewController: UIViewController{
 
     
     
-    private func description(){
+    private func createDescription(){
         descriptionView = UIView()
         
         descriptionView.backgroundColor = .white
@@ -317,7 +317,7 @@ class MovieDetailsViewController: UIViewController{
         }
     }
     
-    private func roles(){
+    private func createRoles(){
         rolesView = UIView()
         
         upStackView = UIStackView()

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F6BDAF9F280788B3004066F2 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDAF9E280788B3004066F2 /* UIColor+Hex.swift */; };
+		F6BDAFA12809D53E004066F2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDAFA02809D53E004066F2 /* SearchBarView.swift */; };
+		F6BDAFA62809F057004066F2 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDAFA52809F056004066F2 /* TopBarView.swift */; };
 		F6CD262827F37E710075ADCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD262727F37E710075ADCA /* AppDelegate.swift */; };
 		F6CD262A27F37E710075ADCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD262927F37E710075ADCA /* SceneDelegate.swift */; };
 		F6CD262C27F37E710075ADCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD262B27F37E710075ADCA /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		F6BDAF9E280788B3004066F2 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		F6BDAFA02809D53E004066F2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		F6BDAFA52809F056004066F2 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		F6CD262427F37E710075ADCA /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6CD262727F37E710075ADCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6CD262927F37E710075ADCA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +51,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F6BDAFA22809EB10004066F2 /* MovieList */ = {
+			isa = PBXGroup;
+			children = (
+				F6BDAFA32809EB6A004066F2 /* MovieListAsGrid */,
+				F6BDAFA42809EB7C004066F2 /* MovieListAsList */,
+				F6BDAFA02809D53E004066F2 /* SearchBarView.swift */,
+				F6CD265027FCD4C80075ADCA /* MovieListViewController.swift */,
+			);
+			path = MovieList;
+			sourceTree = "<group>";
+		};
+		F6BDAFA32809EB6A004066F2 /* MovieListAsGrid */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MovieListAsGrid;
+			sourceTree = "<group>";
+		};
+		F6BDAFA42809EB7C004066F2 /* MovieListAsList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MovieListAsList;
+			sourceTree = "<group>";
+		};
 		F6CD261B27F37E710075ADCA = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +95,7 @@
 		F6CD262627F37E710075ADCA /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				F6BDAFA22809EB10004066F2 /* MovieList */,
 				F6CD262727F37E710075ADCA /* AppDelegate.swift */,
 				F6CD262927F37E710075ADCA /* SceneDelegate.swift */,
 				F6CD262B27F37E710075ADCA /* ViewController.swift */,
@@ -74,7 +104,7 @@
 				F6CD263227F37E720075ADCA /* LaunchScreen.storyboard */,
 				F6CD263527F37E720075ADCA /* Info.plist */,
 				F6CD263D27F46E3B0075ADCA /* MovieDetailsViewController.swift */,
-				F6CD265027FCD4C80075ADCA /* MovieListViewController.swift */,
+				F6BDAFA52809F056004066F2 /* TopBarView.swift */,
 				F6BDAF9E280788B3004066F2 /* UIColor+Hex.swift */,
 			);
 			path = MovieApp;
@@ -162,8 +192,10 @@
 				F6CD263E27F46E3B0075ADCA /* MovieDetailsViewController.swift in Sources */,
 				F6CD265127FCD4C80075ADCA /* MovieListViewController.swift in Sources */,
 				F6CD262C27F37E710075ADCA /* ViewController.swift in Sources */,
+				F6BDAFA12809D53E004066F2 /* SearchBarView.swift in Sources */,
 				F6BDAF9F280788B3004066F2 /* UIColor+Hex.swift in Sources */,
 				F6CD262827F37E710075ADCA /* AppDelegate.swift in Sources */,
+				F6BDAFA62809F057004066F2 /* TopBarView.swift in Sources */,
 				F6CD262A27F37E710075ADCA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
