@@ -13,6 +13,8 @@ class MovieAsGridController: UIViewController{
     private var flowLayout: UICollectionViewFlowLayout!
     public var collectionView: UICollectionView!
     
+    private var sectionCell: SectionCollectionViewCell!
+    
     let cellIdentifier = "cellId"
     
     init(){
@@ -41,7 +43,8 @@ class MovieAsGridController: UIViewController{
         
         view.addSubview(collectionView)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        
+        collectionView.register(SectionCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -61,14 +64,12 @@ extension MovieAsGridController: UICollectionViewDataSource {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: cellIdentifier,
-        for: indexPath)
-        cell.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+        cell.backgroundColor = .yellow
         return cell
     }
 }
