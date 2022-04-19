@@ -32,9 +32,6 @@ class SearchBarView: UIView{
     }
     
     func createSearchBar(){
-        //mainView = UIStackView()
-        //mainView.spacing = 10
-        //addSubview(mainView)
         mainView = UIView()
         addSubview(mainView)
         

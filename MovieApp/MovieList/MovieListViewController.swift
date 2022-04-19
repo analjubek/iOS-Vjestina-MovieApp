@@ -54,8 +54,8 @@ class MovieListViewController: UIViewController{
         
         controllerView = UIView()
         view.addSubview(controllerView)
-        //controllerView.addSubview(movieAsGridController.view)
-        controllerView.addSubview(movieAsListController.view)
+        controllerView.addSubview(movieAsGridController.view)
+        //controllerView.addSubview(movieAsListController.view)
     }
     
     private func buildConstrints(){
@@ -72,11 +72,11 @@ class MovieListViewController: UIViewController{
             $0.top.equalTo(searchBarView.snp.bottom).inset(-40)
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-        /*movieAsGridController.view.snp.makeConstraints{
-            $0.edges.equalTo(controllerView.snp.edges)
-        }*/
-        movieAsListController.view.snp.makeConstraints{
+        movieAsGridController.view.snp.makeConstraints{
             $0.edges.equalTo(controllerView.snp.edges)
         }
+        /*movieAsListController.view.snp.makeConstraints{
+            $0.edges.equalTo(controllerView.snp.edges)
+        }*/
     }
 }
